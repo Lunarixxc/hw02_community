@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% block title %}
-  Записи сообщества
+  Записи сообщества {{group.title}}
 {% endblock %}
 {% block content %}
   <div class="container py-3">
     <h1>{{group.title}}</h1>
     <p>{{group.description}}</p>
   {% for post in posts %}
-  {% include 'includes/lists.html' %}
+    {% include 'includes/post_item.html' %}
   {% if not forloop.last %}<hr>{% endif %}
  {% endfor %}
   </div>

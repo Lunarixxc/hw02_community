@@ -5,9 +5,11 @@
 {% block content %}
   <div class="container py-5">
   {% for post in posts %}
-  {% include 'includes/lists.html' %}  
-  <a href="{% url 'posts:groups_page' post.group %}">все записи группы</a>
-  {% if not forloop.last %}<hr>{% endif %}
- {% endfor %}
+    {% include 'includes/post_item.html' %}  
+    {% if post.group.slug %}
+      <a href="{% url 'posts:groups_page' post.group.slug %}">Сообщество {{post.group.title}}</a>
+    {% endif %}
+    {% if not forloop.last %}<hr>{% endif %}
+  {% endfor %}
   </div>  
 {% endblock %}
